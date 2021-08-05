@@ -52,6 +52,16 @@ public class HR {
             }
             System.out.println("Please enter their salary:");
             String salary = obj.readLine();
+            try {
+                if (Integer.parseInt(salary) <= 0) {
+                    System.out.println("Please enter a non-zero");
+                    System.exit(0);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number");
+                System.exit(0);
+            }
+
             System.out.println("Please enter their department:");
             String department = obj.readLine().toLowerCase();
             List<String> departments = new ArrayList<>();
