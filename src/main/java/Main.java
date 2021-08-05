@@ -32,15 +32,14 @@ public class Main {
             System.out.println("3) generate employee pay report");
             System.out.println("4) reset sales period");
             String choice = obj.readLine();
-            switch (choice){
-                case("1"):
-                    HR.displayEmployee();
-                case("2"):
-                    HR.genReport();
-                case("3"):
-                    HR.genPayReport();
-                case("4"):
-                    HR.resetSalesPeriod();
+            if (choice.equals("1")) {
+                HR.displayEmployee();
+            } else if (choice.equals("2")) {
+                HR.genReport();
+            } else if (choice.equals("3")) {
+                HR.genPayReport();
+            } else if (choice.equals("4")) {
+                HR.resetSalesPeriod();
             }
 
         } catch (IOException e) {
