@@ -1,5 +1,7 @@
 package kainos.employee_stuff;
 
+import java.sql.Connection;
+
 public class Employee {
     private String name;
     private String address;
@@ -14,6 +16,8 @@ public class Employee {
         this.salary = salary;
         this.employeeNum = employeeNum;
     }
+
+
 
 
 
