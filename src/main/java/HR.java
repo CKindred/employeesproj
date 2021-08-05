@@ -2,10 +2,13 @@ import kainos.employee_stuff.Employee;
 import kainos.employee_stuff.SalesEmployee;
 import kainos.employee_stuff.TechnicalEmployee;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class HR {
     public static void displayEmployee() throws SQLException {
@@ -20,6 +23,74 @@ public class HR {
                     rs.getString("department"), "startDate", "endDate");
             System.out.println(dbEmp);
         }
+    }
+
+    public static void enterEmployee()throws IOException {
+        BufferedReader obj = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            System.out.println("Please enter their name:");
+            String name = obj.readLine();
+            System.out.println("Please enter their address:");
+            String address = obj.readLine();
+            System.out.println("Please enter their NI number:");
+            String niNumber = obj.readLine();
+            if (niNumber.length() != 13) {
+                System.out.println("ni number must be 13 characters long");
+                System.exit(0);
+            }
+            System.out.println("Please enter their sort code:");
+            String sortCode = obj.readLine();
+            if (sortCode.length() != 8) {
+                System.out.println("sort code must be 8 characters long");
+                System.exit(0);
+            }
+            System.out.println("Please enter their account number:");
+            String accountNumber = obj.readLine();
+            if (accountNumber.length() != 8) {
+                System.out.println("account number must be 8 characters long");
+                System.exit(0);
+            }
+            System.out.println("Please enter their salary:");
+            String salary = obj.readLine();
+            System.out.println("Please enter their department:");
+            String department = obj.readLine().toLowerCase();
+            List<String> departments = new ArrayList<>();
+            departments.add("sales");
+            departments.add("technical");
+            if (!departments.contains(department)) {
+                System.out.println("the department must be one of the following: ");
+                System.out.println(departments);
+                System.exit(0);
+            }
+            PreparedStatement preparedStatement = Main.c.prepareStatement("INSERT INTO employees " +
+                    "(empName, address, nationalInsurance, sortCode, accountnumber, salary,department) " +
+                    "VALUES (?,?,?,?,?,?,?) ");
+            preparedStatement.setString(1,name);
+            preparedStatement.setString(2,address);
+            preparedStatement.setString(3,niNumber);
+            preparedStatement.setString(4,sortCode);
+            preparedStatement.setInt(5, Integer.parseInt(accountNumber));
+            preparedStatement.setInt(6, Integer.parseInt(salary));
+            preparedStatement.setString(7,department);
+            preparedStatement.execute();
+            /*
+            if(department.equals("sales")){
+                ResultSet rs = preparedStatement.getGeneratedKeys();
+                System.out.println(rs);
+                enterSalesEmployee(rs.getInt(1));
+            }*/
+
+        }catch(SQLException e){
+            System.out.println("Problem with the SQL statement");
+            e.printStackTrace();
+
+
+        }catch(IOException e){
+            System.out.println("Incorrect input");
+        }
+
+
+
     }
 
 

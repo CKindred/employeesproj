@@ -40,6 +40,8 @@ public class Main {
                 HR.genPayReport();
             } else if (choice.equals("4")) {
                 HR.resetSalesPeriod();
+            } else if (choice.equals("5")) {
+                HR.enterEmployee();
             }
 
         } catch (IOException e) {
