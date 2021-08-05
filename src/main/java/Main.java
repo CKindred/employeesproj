@@ -28,10 +28,13 @@ public class Main {
             BufferedReader obj = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("select an option");
             System.out.println("1) view all employees");
+            System.out.println("2) generate report of employees by department");
             String choice = obj.readLine();
             switch (choice){
                 case("1"):
                     HR.displayEmployee();
+                case("2"):
+                    HR.genReport();
             }
 
         } catch (IOException e) {
