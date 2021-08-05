@@ -1,6 +1,22 @@
 package kainos.employee_stuff;
 
 public class SalesEmployee extends Employee{
+    public float getComissionRate() {
+        return comissionRate;
+    }
+
+    public void setComissionRate(float comissionRate) {
+        this.comissionRate = comissionRate;
+    }
+
+    public int getTotalSales() {
+        return totalSales;
+    }
+
+    public void setTotalSales(int totalSales) {
+        this.totalSales = totalSales;
+    }
+
     float comissionRate;
     int totalSales;
 
