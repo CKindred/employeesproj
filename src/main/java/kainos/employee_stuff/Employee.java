@@ -1,64 +1,50 @@
 package kainos.employee_stuff;
 
-import java.sql.Connection;
-
 public class Employee {
     private String name;
     private String address;
     private String NI;
     private int salary;
     private int employeeNum;
+    String sortCode;
+    String accountNum;
+    String department;
+    String startDate;
 
-    public String getName() {
-        return name;
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", NI='" + NI + '\'' +
+                ", salary=" + salary +
+                ", employeeNum=" + employeeNum +
+                ", sortCode='" + sortCode + '\'' +
+                ", accountNum='" + accountNum + '\'' +
+                ", department='" + department + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    String endDate;
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getNI() {
-        return NI;
-    }
-
-    public void setNI(String NI) {
-        this.NI = NI;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public int getEmployeeNum() {
-        return employeeNum;
-    }
-
-    public void setEmployeeNum(int employeeNum) {
-        this.employeeNum = employeeNum;
-    }
-
-    public Employee(String name, String address, String NI, int salary, int employeeNum){
+    public Employee(int employeeNum, String name, String address, String NI, String sortCode, String accountNum,
+                    int salary, String department, String startDate, String endDate) {
         this.name = name;
         this.address = address;
         this.NI = NI;
         this.salary = salary;
         this.employeeNum = employeeNum;
+        this.sortCode = sortCode;
+        this.accountNum = accountNum;
+        this.department = department;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
-
-
-
-
-
 }
+
+
+
+
+
