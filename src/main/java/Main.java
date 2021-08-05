@@ -27,19 +27,25 @@ public class Main {
 
             BufferedReader obj = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("select an option");
-            System.out.println("1) view all employees");
+            System.out.println("1) enter an employee");
             System.out.println("2) generate report of employees by department");
+            System.out.println("4) generate employee pay report");
+            System.out.println("5) display employee with highest sales");
+            System.out.println("6) show projects with no employees assigned");
+            System.out.println("7) show employees with no projects");
             String choice = obj.readLine();
             if (choice.equals("1")) {
-                HR.displayEmployee();
+                HR.enterEmployee();
             } else if (choice.equals("2")) {
                 HR.genReport();
-            } else if (choice.equals("3")) {
-                HR.genPayReport();
             } else if (choice.equals("4")) {
-                HR.resetSalesPeriod();
+                HR.genPayReport();
             } else if (choice.equals("5")) {
-                HR.enterEmployee();
+                HR.highestSales();
+            } else if (choice.equals("6")) {
+                HR.emptyProject();
+            } else if (choice.equals("7")) {
+                HR.empNoProject();
             }
 
         } catch (IOException e) {
