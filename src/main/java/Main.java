@@ -29,20 +29,17 @@ public class Main {
             System.out.println("select an option");
             System.out.println("1) view all employees");
             System.out.println("2) generate report of employees by department");
-            System.out.println("5) view employee with highest sale");
-            System.out.println("7) view projects without employees");
             String choice = obj.readLine();
-            switch (choice){
-                case("1"):
-                    HR.displayEmployee();
-                case("2"):
-                    HR.genReport();
-                case("5"):
-                    HR.highestSales();
-                case("7"):
-                    HR.emptyProject();
-                    HR.empNoProject();
-                    //HR.empsOnProj();
+            if (choice.equals("1")) {
+                HR.displayEmployee();
+            } else if (choice.equals("2")) {
+                HR.genReport();
+            } else if (choice.equals("3")) {
+                HR.genPayReport();
+            } else if (choice.equals("4")) {
+                HR.resetSalesPeriod();
+            } else if (choice.equals("5")) {
+                HR.enterEmployee();
             }
 
         } catch (IOException e) {
