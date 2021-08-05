@@ -6,3 +6,4 @@ Repo for Kainos training academy week 2 project.
 * Callum Kindred
 * Thomas Cordall
 * Patrycja Weihs
+

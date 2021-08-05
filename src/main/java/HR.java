@@ -14,13 +14,13 @@ public class HR {
                 "empsuser", "empPwd!");  // Bad practices alert!
         Statement st = c.createStatement();
 
-        Console console = System.console();
-        System.out.println("Enter 1 for entering an employee, etc");
-        String choice = console.readLine("Please enter an option:");
-        switch (choice){
-            case("1"):
-                enterEmployee(c);
-        }
+//        Console console = System.console();
+//        System.out.println("Enter 1 for entering an employee, etc");
+//        String choice = console.readLine("Please enter an option:");
+//        switch (choice){
+//            case("1"):
+//                enterEmployee(c);
+//        }
 
 
 
