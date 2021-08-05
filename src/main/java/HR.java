@@ -21,11 +21,7 @@ public class HR {
             System.out.println(dbEmp);
         }
     }
-    private static void enterEmployee(Connection c) {
-        //String choice = console.readLine("Please enter an option:");
 
-
-    }
 
     public static void genReport() throws SQLException {
         Statement st = Main.c.createStatement();
@@ -51,6 +47,40 @@ public class HR {
                     rs.getInt("salary"),
                     rs.getString("department"), rs.getString("startDate"), rs.getString("endDate"), rs.getFloat("commissionRate"), rs.getInt("totalSales"));
             System.out.println(dbEmp);
+        }
+    }
+
+    public static void genPayReport() throws SQLException {
+        System.out.println("***Employee Pay Report***");
+        System.out.println("Name           Net Pay\n");
+        Statement st = Main.c.createStatement();
+
+        ResultSet rs = st.executeQuery("SELECT empName, salary FROM employees join techEmployees using (empID)");
+        System.out.println("Technical employees: ");
+        while (rs.next()) {
+            float netPay = rs.getInt("salary") * 0.75f;
+            System.out.println(rs.getString("empName") + ": " + netPay);
+        }
+        System.out.println();
+        rs = st.executeQuery("SELECT empName, salary, commissionRate, totalSales FROM employees join salesEmployees using (empID)");
+        System.out.println("Sales employees: ");
+        while (rs.next()) {
+            float payAfterTax = rs.getInt("salary") * 0.75f;
+            float totalCommission = rs.getFloat("commissionRate") * rs.getInt("totalSales");
+            float netPay = payAfterTax + totalCommission;
+
+            System.out.println(rs.getString("empName") + ": " + netPay);
+        }
+    }
+
+    public static void resetSalesPeriod() {
+        Statement st = null;
+        try {
+            st = Main.c.createStatement();
+            st.executeUpdate("UPDATE salesEmployees set totalSales=0");
+        } catch (SQLException throwables) {
+            System.out.println("Failed to reset sales period");
+            throwables.printStackTrace();
         }
     }
 }
