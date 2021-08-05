@@ -9,4 +9,12 @@ public class SalesEmployee extends Employee{
         this.comissionRate = comissionRate;
         this.totalSales = totalSales;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", comissionRate=" + comissionRate +
+                ", totalSales=" + totalSales +
+                '}';
+    }
 }

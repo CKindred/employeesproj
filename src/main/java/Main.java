@@ -29,12 +29,15 @@ public class Main {
             System.out.println("select an option");
             System.out.println("1) view all employees");
             System.out.println("2) generate report of employees by department");
+            System.out.println("5) view employee with highest sale");
             String choice = obj.readLine();
             switch (choice){
                 case("1"):
                     HR.displayEmployee();
                 case("2"):
                     HR.genReport();
+                case("5"):
+                    HR.highestSales();
             }
 
         } catch (IOException e) {

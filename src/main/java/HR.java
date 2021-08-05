@@ -21,6 +21,25 @@ public class HR {
             System.out.println(dbEmp);
         }
     }
+
+    public static void highestSales() throws SQLException {
+        Statement st = Main.c.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM employees join salesEmployees using (empID) ORDER BY totalSales DESC");
+
+        System.out.println("Employee with highest total sales: ");
+        if(rs.next()) {
+            Employee dbEmp = new SalesEmployee(rs.getInt("empID"), rs.getString("empName"),
+                    rs.getString("address"), rs.getString("nationalInsurance"),
+                    rs.getString("sortCode"), rs.getString("accountnumber"),
+                    rs.getInt("salary"),
+                    rs.getString("department"), rs.getString("startDate"), rs.getString("endDate"), rs.getFloat("commissionRate"), rs.getInt("totalSales"));
+            System.out.println(dbEmp.getName());
+            System.out.println(dbEmp);
+        }
+
+    }
+
+
     private static void enterEmployee(Connection c) {
         //String choice = console.readLine("Please enter an option:");
 

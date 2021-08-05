@@ -13,7 +13,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Employee: " +
                 "name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", NI='" + NI + '\'' +
@@ -23,8 +23,7 @@ public class Employee {
                 ", accountNum='" + accountNum + '\'' +
                 ", department='" + department + '\'' +
                 ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                '}';
+                ", endDate='" + endDate + '\'';
     }
 
     String endDate;
@@ -41,6 +40,10 @@ public class Employee {
         this.department = department;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public String getName() {
+        return name;
     }
 }
 
